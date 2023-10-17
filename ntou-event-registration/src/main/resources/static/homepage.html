@@ -40,12 +40,6 @@
                 type: "GET",
                 success: function (data) {
                     campaign(data);
-                },
-                error: function (data) {
-                    console.log("後端呼叫失敗");
-                    $.getJSON("../file.json", function (data) {
-                        campaign(data);
-                    });
                 }
             })
         }
@@ -79,7 +73,7 @@
     <div class="container-fluid">
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
             <div>
-                <a class="navbar-brand" href="./homepage.html"><img src="../img/badge-check.png" alt="" width="30"
+                <a class="navbar-brand" href="./homepage.html"><img src="img/badge-check.png" alt="" width="30"
                         height="30" class="d-inline-block align-text-top">海大活動報名系統</a>
             </div>
             <div class="d-flex">
@@ -91,13 +85,13 @@
             </div>
 
             <div class="nav-item ms-auto">
-                <a class="nav-link dropdown-toggle" href="../main page/member.html" role="button" id="member">
-                    <img src="../img/user.png" class="rounded-circle" height="25" alt="member" loading="lazy" />
+                <a class="nav-link dropdown-toggle" href="main page/member.html" role="button" id="member">
+                    <img src="img/user.png" class="rounded-circle" height="25" alt="member" loading="lazy" />
                 </a>
             </div>
         </nav>
         <div class="container-fluid">
-            <div class="row remaining-space" ;>
+            <div class="row remaining-space">
                 <div class="bg-light col-md-2 border" style="width: 10%;">
 
                 </div>
