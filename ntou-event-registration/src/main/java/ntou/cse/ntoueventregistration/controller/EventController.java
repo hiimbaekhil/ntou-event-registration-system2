@@ -20,7 +20,7 @@ public class EventController {
     }
 
     @GetMapping
-    public List<Event> getAllEvents() {
+    public List<Event> getEvents() {
         return service.getAllEvents();
     }
 }
