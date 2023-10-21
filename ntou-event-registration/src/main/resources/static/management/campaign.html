@@ -28,28 +28,38 @@
     </style>
     <script>
         $(document).ready(function () {
+
+            $.getJSON("../file/organization.json", function (data) {
+                let selectElement = document.getElementById("activityCategory");
+                for (let category in data) {
+                    if (data.hasOwnProperty(category)) {
+                        data[category].forEach(function (unit) {
+                            let option = document.createElement("option");
+                            option.value = unit;
+                            option.text = unit;
+                            selectElement.appendChild(option);
+                        });
+                    }
+                }
+            });
             $("#submitBtn").click(function (event) {
                 event.preventDefault();
-                var formData = $("#Form").serialize();
-                console.log(formData);
+                let formData = $("#Form").serialize();
+                console.log(JSON.stringify(formData));
                 $.ajax({
                     url: "/create-capaign",
                     type: "POST",
                     data: formData,
 
                     success: function (response) {
-
-                        console.log("success：" + response);
-                        //setTimeout(function () {
-                        //    location.reload();
-                        //}, 20000);
+                        console.log("成功：" + JSON.stringify(formData));
                     },
                     error: function (error) {
-
                         console.log("error：" + error);
                     }
                 });
             });
+
         });
 
     </script>
@@ -130,23 +140,6 @@
                             <div class="form-outline mb-4">
                                 <label for="activityCategory">活動分類</label>
                                 <select id="activityCategory" name="activityCategory" class="form-control">
-                                    <option value="海運暨管理學院">海運暨管理學院</option>
-                                    <option value="生命科學院">生命科學院</option>
-                                    <option value="海洋科學與資源學院">海洋科學與資源學院</option>
-                                    <option value="工學院">工學院</option>
-                                    <option value="電機資訊學院">電機資訊學院</option>
-                                    <option value="人文社會科學院">人文社會科學院</option>
-                                    <option value="教務處">教務處</option>
-                                    <option value="研究發展處">研究發展處</option>
-                                    <option value="學生事務處">學生事務處</option>
-                                    <option value="總務處">總務處</option>
-                                    <option value="圖書暨資訊處">圖書暨資訊處</option>
-                                    <option value="體育室">體育室</option>
-                                    <option value="秘書室">秘書室</option>
-                                    <option value="人事室">人事室</option>
-                                    <option value="會計室">會計室</option>
-                                    <option value="海洋生物科技及環境生態中心">海洋生物科技及環境生態中心</option>
-                                    <option value="教師發展及行政效能中心">教師發展及行政效能中心</option>
                                 </select>
                             </div>
                             <!-- 活動時間輸入 -->
