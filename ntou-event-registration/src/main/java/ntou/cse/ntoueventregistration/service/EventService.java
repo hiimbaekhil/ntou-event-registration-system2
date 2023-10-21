@@ -19,4 +19,8 @@ public class EventService {
     public List<Event> getAllEvents() {
         return repository.findAll();
     }
+
+    public void createEvent(Event event) {
+        repository.insert(event);
+    }
 }
