@@ -11,15 +11,17 @@ public class Event implements Serializable {
     private LocalDateTime startTime;
     private LocalDateTime endTime;
     private String describe;
+    private String from;
 
     public Event() {
     }
 
-    public Event(String title, LocalDateTime startTime, LocalDateTime endTime, String describe) {
+    public Event(String title, LocalDateTime startTime, LocalDateTime endTime, String describe, String from) {
         this.title = title;
         this.startTime = startTime;
         this.endTime = endTime;
         this.describe = describe;
+        this.from = from;
     }
 
     public String getTitle() {
@@ -52,5 +54,13 @@ public class Event implements Serializable {
 
     public void setDescribe(String describe) {
         this.describe = describe;
+    }
+
+    public String getFrom() {
+        return from;
+    }
+
+    public void setFrom(String from) {
+        this.from = from;
     }
 }
