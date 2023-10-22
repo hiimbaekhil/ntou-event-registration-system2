@@ -29,10 +29,6 @@
         }
     </style>
     <script>
-        //匯入file.json檔案
-        $(document).ready(function () {
-            loading();
-        })
         function loading() {
             let url = "/events";
             $.ajax({
@@ -103,6 +99,53 @@
                 document.getElementById("campaigns").appendChild(campaign);
             }
         }
+
+        function showSearchResults() {
+            document.getElementById("campaigns").innerHTML = "";
+            $.ajax({
+                success: function (data) {
+                    for (const i in data) {
+                        const startTime = new Date(data[i].startTime);
+                        const endTime = new Date(data[i].endTime);
+                        const options = {
+                            weekday: "long",
+                            year: "numeric",
+                            month: "long",
+                            day: "numeric",
+                            hour: "2-digit",
+                            minute: "2-digit"
+                        };
+
+                        document.getElementById("campaigns").innerHTML += `
+                            <div class="card">
+                                <img class="card-img-top" src="img/no-image-available.jpg" alt="${data[i].title}">
+                                <div class="card-body">
+                                    <h5 class="card-title">${data[i].title}</h5>
+                                    <p class="card-text">${data[i].describe}</p>
+                                    <p class="card-text">Start Time: ${startTime.toLocaleString(undefined, options)}</p>
+                                    <p class="card-text">End Time: ${endTime.toLocaleString(undefined, options)}</p>
+                                </div>
+                            </div>
+                        `;
+                    }
+                },
+                url: "events/search?keyword=" + document.getElementById("search-bar").value
+            });
+        }
+
+        $(document).ready(function () {
+            loading();
+
+            document.getElementById("search-bar").addEventListener("keypress", function(event) {
+                if (event.key === "Enter") {
+                    event.preventDefault();
+                    showSearchResults();
+                }
+            });
+            document.getElementById("search-button").addEventListener("click", showSearchResults);
+
+        });
+
     </script>
 
 
@@ -119,10 +162,10 @@
             </div>
             <div class="d-flex">
                 <form class="me-2">
-                    <input class="form-control" type="search" placeholder="Search" aria-label="Search">
+                    <input class="form-control" type="search" placeholder="搜尋活動" aria-label="Search" id="search-bar">
                 </form>
 
-                <button class="btn btn-outline-success" type="button">Search</button>
+                <button class="btn btn-outline-success" type="button" id="search-button">搜尋</button>
             </div>
 
             <div class="nav-item ms-auto">
