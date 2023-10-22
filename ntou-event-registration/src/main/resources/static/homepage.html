@@ -63,6 +63,10 @@
                         <p class="card-text">End Time: ${endTime.toLocaleString(undefined, options)}</p>
                     </div>
                 `;
+                campaign.addEventListener('click',()=>{
+                    localStorage.setItem('title',data[i].title);
+                    window.location.assign('activeDetail.html', );
+                });
                 document.getElementById("campaigns").appendChild(campaign);
             }
         }
