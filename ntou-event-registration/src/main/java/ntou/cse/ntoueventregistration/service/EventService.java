@@ -23,4 +23,7 @@ public class EventService {
     public void createEvent(Event event) {
         repository.insert(event);
     }
+    public List<Event> getEventsByTitleLike(String keyword) {
+        return repository.findByTitleLike(keyword);
+    }
 }
