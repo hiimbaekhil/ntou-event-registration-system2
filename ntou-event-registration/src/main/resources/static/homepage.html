@@ -30,9 +30,9 @@
     </style>
     <script>
         //匯入file.json檔案
-        document.addEventListener("DOMContentLoaded", function () {
+        $(document).ready(function () {
             loading();
-        });
+        })
         function loading() {
             let url = "/events";
             $.ajax({
@@ -42,6 +42,23 @@
                     campaign(data);
                 }
             })
+            $.getJSON("./file/organization.json", function (data) {
+                let selectElement = document.getElementById("classFrom");
+                for (let category in data) {
+                    if (data.hasOwnProperty(category)) {
+                        data[category].forEach(function (unit) {
+                            let list = document.createElement("li");
+                            let link = document.createElement("a");
+                            list.className = "nav-item";
+                            link.className = "nav-link link-dark";
+                            link.text = unit;
+                            link.href = "/" + unit;
+                            list.appendChild(link);
+                            selectElement.appendChild(list);
+                        });
+                    }
+                }
+            });
         }
         function campaign(data) {
             for (let i = 0; i < data.length; i++) {
@@ -109,37 +126,20 @@
                         <span class="fs-4">所有活動</span>
                     </a>
                     <hr>
-                    <ul class="nav nav-pills flex-column mb-auto ">
+                    <ul class="nav nav-pills flex-column mb-auto " id="classFrom">
                         <li class="nav-item">
-                            <a href="#" class="nav-link active ">
+                            <a href="#" class="nav-link">
                                 首頁
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#" class="nav-link link-dark">
-                                分類一
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#" class="nav-link link-dark">
-                                分類二
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#" class="nav-link link-dark">
-                                分類三
                             </a>
                         </li>
                     </ul>
                     <hr>
                 </div>
                 <div class="col-md-2 border" style="width: 60%;">
-                    <div></div>
                     <div class="card-group " id="campaigns">
                     </div>
                 </div>
                 <div class="bg-light col-md-1.5 border" style="width: 15%;">
-
                 </div>
             </div>
         </div>

@@ -130,37 +130,33 @@
                             <h5 class="card-title">創建活動</h5>
                         </div>
                         <form class="card-body" id="Form">
-                            <!-- 活動主題輸入 -->
                             <div class="form-outline mb-4">
                                 <label for="activityTitle">活動主題</label>
-                                <input type="text" id="activityTitle" name="activityTitle" class="form-control">
+                                <input type="text" id="title" name="title" class="form-control">
                             </div>
 
-                            <!-- 創建單位輸入 -->
                             <div class="form-outline mb-4">
                                 <label for="activityCategory">活動分類</label>
-                                <select id="activityCategory" name="activityCategory" class="form-control">
+                                <select id="activityCategory" name="from" class="form-control">
                                 </select>
                             </div>
-                            <!-- 活動時間輸入 -->
                             <div class="form-outline mb-4">
-                                <label for="activityTime">活動時間</label>
-                                <input type="datetime-local" id="activityTime" name="activityTime"
-                                    class="form-control" />
+                                <label for="activityTime">活動開始時間</label>
+                                <input type="datetime-local" name="startTime" class="form-control">
                             </div>
-                            <!-- 活動地點輸入 -->
+                            <div class="form-outline mb-4">
+                                <label for="activityTime">活動結束時間</label>
+                                <input type="datetime-local" name="endTime" class="form-control">
+                            </div>
                             <div class="form-outline mb-4">
                                 <label for="activityLocation">活動地點</label>
-                                <input type="text" id="activityLocation" name="activityLocation" class="form-control" />
+                                <input type="text" name="Location" class="form-control" />
                             </div>
-
-                            <!-- 活動概述輸入 -->
                             <div class="form-group mb-4">
                                 <label for="activityDescription">活動介紹</label>
-                                <textarea id="activityDescription" name="activityDescription" rows="4"
+                                <textarea id="activityDescription" name="describe" rows="4"
                                     class="form-control"></textarea>
                             </div>
-                            <!--提交-->
                             <div class="text-center">
                                 <input type="submit" value="提交" class="btn btn-primary" id="submitBtn" />
                             </div>
