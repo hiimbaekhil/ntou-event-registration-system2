@@ -104,8 +104,8 @@
             loading();
 
             document.getElementById("search-bar").addEventListener("keypress", function(event) {
-                event.preventDefault();
                 if (event.key === "Enter") {
+                    event.preventDefault();
                     showSearchResults();
                 }
             });
