@@ -38,14 +38,15 @@
             $.ajax({
                 url: url,
                 type: "GET",
-                //   success: function (data) {
-                //    campaign(data);
-                //}
+                success: function (data) {
+                    campaign(data);
+                }
+                /**
                 success: function (data) {
                     $.getJSON("./file/test.events.json", function (data) {
                         campaign(data);
                     });
-                }
+                }**/
             })
             $.getJSON("./file/organization.json", function (data) {
                 let selectElement = document.getElementById("classFrom");
