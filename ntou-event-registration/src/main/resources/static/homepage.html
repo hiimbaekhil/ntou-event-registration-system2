@@ -64,11 +64,13 @@
                     </div>
                 `;
                 campaign.addEventListener('click',()=>{
+                    localStorage.removeItem('title');
                     localStorage.setItem('title',data[i].title);
                     window.location.assign('activeDetail.html', );
                 });
                 document.getElementById("campaigns").appendChild(campaign);
             }
+            console.log(localStorage);
         }
 
         function showSearchResults() {
