@@ -1,16 +1,105 @@
-[
-  {
-    "_id": {
-      "$oid": "652deaf6d78d9e0ad81347cd"
-    },
-    "title": "棉花糖",
-    "startTime": {
-      "$date": "2023-10-16T13:30:00.000Z"
-    },
-    "endTime": {
-      "$date": "2023-11-03T19:30:00.000Z"
-    },
-    "describe": "“比起合唱團、人聲樂團，他們更喜歡被定義為樂團”誰說阿卡貝拉只能翻唱？！《尋人啟事樂團》是華語音樂圈第一個發行”全創作”專輯的阿卡貝拉樂團，亦榮獲第32屆金曲獎「最佳演唱組合獎」。成員個個具備主唱與合聲的實力，同一首曲子不同口氣詮釋卻又彼此連結，交織飽滿的合聲與張力；以阿卡貝拉為主，又不以人聲為限，在編曲中融入效果器，創造樂曲多變及可能性，獨特的舞台魅力與現場感染力，絕對讓您大呼過癮。",
-    "_class": "圖書暨資訊處"
-  }
-]
+[{
+  "_id": {
+    "$oid": "6533e1312b2ecb6bd9f83422"
+  },
+  "title": "資工系新生茶會",
+  "startTime": {
+    "$date": "2023-09-07T08:00:00.000Z"
+  },
+  "endTime": {
+    "$date": "2023-09-07T10:30:00.000Z"
+  },
+  "describe": "The description of 「資工系新生茶會」.",
+  "from": "資工系學會",
+  "_class": "ntou.cse.ntoueventregistration.entity.Event"
+},
+{
+  "_id": {
+    "$oid": "6533e1312b2ecb6bd9f83423"
+  },
+  "title": "資工x光電x機械 聯合宿營",
+  "startTime": {
+    "$date": "2023-09-22T16:00:00.000Z"
+  },
+  "endTime": {
+    "$date": "2023-09-23T16:00:00.000Z"
+  },
+  "describe": "The description of 「生科x電機 聯合迎新宿營 - 生電實驗室」.",
+  "from": "資工系學會",
+  "_class": "ntou.cse.ntoueventregistration.entity.Event"
+},
+{
+  "_id": {
+    "$oid": "6533e1312b2ecb6bd9f83424"
+  },
+  "title": "生科x電機 聯合迎新宿營 - 生電實驗室",
+  "startTime": {
+    "$date": "2023-10-16T10:00:00.000Z"
+  },
+  "endTime": {
+    "$date": "2023-10-16T13:00:00.000Z"
+  },
+  "describe": "The description of 「生科x電機 聯合迎新宿營 - 生電實驗室」.",
+  "from": "電機系學會",
+  "_class": "ntou.cse.ntoueventregistration.entity.Event"
+},
+{
+  "_id": {
+    "$oid": "6533e1312b2ecb6bd9f83425"
+  },
+  "title": "資工系系烤",
+  "startTime": {
+    "$date": "2023-10-16T10:00:00.000Z"
+  },
+  "endTime": {
+    "$date": "2023-10-16T13:00:00.000Z"
+  },
+  "describe": "The description of 「資工系系烤」.",
+  "from": "資工系學會",
+  "_class": "ntou.cse.ntoueventregistration.entity.Event"
+},
+{
+  "_id": {
+    "$oid": "6533e1312b2ecb6bd9f83426"
+  },
+  "title": "河工鬼屋 - 邪",
+  "startTime": {
+    "$date": "2023-03-30T10:00:00.000Z"
+  },
+  "endTime": {
+    "$date": "2023-03-30T17:00:00.000Z"
+  },
+  "describe": "The description of 「河工鬼屋 - 邪」.",
+  "from": "河工系學會",
+  "_class": "ntou.cse.ntoueventregistration.entity.Event"
+},
+{
+  "_id": {
+    "$oid": "6533e1312b2ecb6bd9f83427"
+  },
+  "title": "2023 學生創業新手村",
+  "startTime": {
+    "$date": "2023-11-17T16:00:00.000Z"
+  },
+  "endTime": {
+    "$date": "2023-11-17T16:00:00.000Z"
+  },
+  "describe": "The description of 「2023 學生創業新手村」.",
+  "from": "教務處 教學中心",
+  "_class": "ntou.cse.ntoueventregistration.entity.Event"
+},
+{
+  "_id": {
+    "$oid": "6533e1312b2ecb6bd9f83428"
+  },
+  "title": "創新思維工作坊",
+  "startTime": {
+    "$date": "2023-06-07T01:30:00.000Z"
+  },
+  "endTime": {
+    "$date": "2023-06-07T10:00:00.000Z"
+  },
+  "describe": "The description of 「創新思維工作坊」.",
+  "from": "教務處 教學中心",
+  "_class": "ntou.cse.ntoueventregistration.entity.Event"
+}]
