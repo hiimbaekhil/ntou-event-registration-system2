@@ -28,14 +28,13 @@
     </style>
     <script>
         $.ajax({
-            url: "/create-campaign",
+            url: "/events",
             type: "GET",
-            success: function (response) {
-                console.log("success：" + response);
-                let activityData = JSON.parse(response);
-                createCampaign(activityData);
-            },
-            error: function (error) {
+            //success: function (response) {
+            ///   console.log("success：" + response);
+            //    createCampaign(response);
+            //},
+            success: function (error) {
                 $.getJSON("../file/test.events.json", function (data) {
                     createCampaign(data);
                 })
@@ -59,7 +58,6 @@
                 campaign.textContent = data[i].title + startTime.toLocaleString(undefined, options);
                 createList.appendChild(campaign);
             }
-
         }
 
     </script>

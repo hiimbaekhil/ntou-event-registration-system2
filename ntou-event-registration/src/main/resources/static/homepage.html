@@ -38,8 +38,13 @@
             $.ajax({
                 url: url,
                 type: "GET",
+                //   success: function (data) {
+                //    campaign(data);
+                //}
                 success: function (data) {
-                    campaign(data);
+                    $.getJSON("./file/test.events.json", function (data) {
+                        campaign(data);
+                    });
                 }
             })
             $.getJSON("./file/organization.json", function (data) {
@@ -47,19 +52,30 @@
                 for (let category in data) {
                     if (data.hasOwnProperty(category)) {
                         data[category].forEach(function (unit) {
-                            let list = document.createElement("li");
-                            let link = document.createElement("a");
-                            list.className = "nav-item";
-                            link.className = "nav-link link-dark";
-                            link.text = unit;
-                            link.href = "/" + unit;
-                            list.appendChild(link);
-                            selectElement.appendChild(list);
+                            let button = document.createElement("button");
+                            button.className = "btn";
+                            button.textContent = unit;
+                            button.addEventListener("click", function () {
+                                let buttonText = $(this).text();
+                                console.log(unit);
+                                filterCampaignsByCategory(unit);
+                            });
+                            selectElement.appendChild(button);
                         });
                     }
                 }
             });
         }
+        function filterCampaignsByCategory(category) {
+            document.getElementById("campaigns").innerHTML = "";
+            $.getJSON("./file/test.events.json", function (data) {
+                data = data.filter(function (event) {
+                    return event.from == category;
+                });
+                campaign(data);
+            });
+        }
+
         function campaign(data) {
             for (let i = 0; i < data.length; i++) {
                 let campaign = document.createElement("div");
@@ -76,7 +92,6 @@
                 };
 
                 campaign.innerHTML = `
-                    <img src="../img/no-image-available.jpg" alt="${data[i].title}">
                     <div class="card-body">
                         <h5 class="card-title">${data[i].title}</h5>
                         <p class="card-text">${data[i].describe}</p>
