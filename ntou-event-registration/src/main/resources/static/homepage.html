@@ -29,12 +29,15 @@
         }
     </style>
     <script>
+        let events;
+
         function loading() {
             let url = "/events";
             $.ajax({
                 url: url,
                 type: "GET",
                 success: function (data) {
+                    events = data;
                     campaign(data);
                 }
                 /**
@@ -64,13 +67,12 @@
             });
         }
         function filterCampaignsByCategory(category) {
-            document.getElementById("campaigns").innerHTML = "";
-            $.getJSON("./file/test.events.json", function (data) {
-                data = data.filter(function (event) {
-                    return event.from == category;
-                });
-                campaign(data);
+            const data = events.filter(function (event) {
+                return event.from === category;
             });
+
+            document.getElementById("campaigns").innerHTML = "";
+            campaign(data);
         }
 
         function campaign(data) {
