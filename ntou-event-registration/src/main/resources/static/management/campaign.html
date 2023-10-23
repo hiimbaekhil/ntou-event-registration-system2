@@ -29,7 +29,7 @@
     <script>
         $(document).ready(function () {
 
-            $.getJSON("../file/organization.json", function (data) {
+            $.getJSON("../file/categories.json", function (data) {
                 let selectElement = document.getElementById("activityCategory");
                 for (let category in data) {
                     if (data.hasOwnProperty(category)) {
