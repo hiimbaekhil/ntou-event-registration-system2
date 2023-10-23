@@ -29,16 +29,52 @@
         }
     </style>
     <script>
+        let events;
+
         function loading() {
             let url = "/events";
             $.ajax({
                 url: url,
                 type: "GET",
                 success: function (data) {
+                    events = data;
                     campaign(data);
                 }
+                /**
+                success: function (data) {
+                    $.getJSON("./file/test.events.json", function (data) {
+                        campaign(data);
+                    });
+                }**/
             })
+            $.getJSON("file/categories.json", function (data) {
+                let selectElement = document.getElementById("classFrom");
+                for (let category in data) {
+                    if (data.hasOwnProperty(category)) {
+                        data[category].forEach(function (unit) {
+                            let button = document.createElement("button");
+                            button.className = "btn";
+                            button.textContent = unit;
+                            button.addEventListener("click", function () {
+                                let buttonText = $(this).text();
+                                console.log(unit);
+                                filterCampaignsByCategory(unit);
+                            });
+                            selectElement.appendChild(button);
+                        });
+                    }
+                }
+            });
         }
+        function filterCampaignsByCategory(category) {
+            const data = events.filter(function (event) {
+                return event.from === category;
+            });
+
+            document.getElementById("campaigns").innerHTML = "";
+            campaign(data);
+        }
+
         function campaign(data) {
             for (let i = 0; i < data.length; i++) {
                 let campaign = document.createElement("div");
@@ -55,7 +91,6 @@
                 };
 
                 campaign.innerHTML = `
-                    <img src="../img/no-image-available.jpg" alt="${data[i].title}">
                     <div class="card-body">
                         <h5 class="card-title">${data[i].title}</h5>
                         <p class="card-text">${data[i].describe}</p>
@@ -136,7 +171,7 @@
             </div>
 
             <div class="nav-item ms-auto">
-                <a class="nav-link dropdown-toggle" href="main page/member.html" role="button" id="member">
+                <a class="nav-link dropdown-toggle" href="main page/advancedUser.html" role="button" id="member">
                     <img src="img/user.png" class="rounded-circle" height="25" alt="member" loading="lazy" />
                 </a>
             </div>
@@ -152,37 +187,20 @@
                         <span class="fs-4">所有活動</span>
                     </a>
                     <hr>
-                    <ul class="nav nav-pills flex-column mb-auto ">
+                    <ul class="nav nav-pills flex-column mb-auto " id="classFrom">
                         <li class="nav-item">
-                            <a href="#" class="nav-link active ">
+                            <a href="#" class="nav-link">
                                 首頁
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#" class="nav-link link-dark">
-                                分類一
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#" class="nav-link link-dark">
-                                分類二
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#" class="nav-link link-dark">
-                                分類三
                             </a>
                         </li>
                     </ul>
                     <hr>
                 </div>
                 <div class="col-md-2 border" style="width: 60%;">
-                    <div></div>
                     <div class="card-group " id="campaigns">
                     </div>
                 </div>
                 <div class="bg-light col-md-1.5 border" style="width: 15%;">
-
                 </div>
             </div>
         </div>

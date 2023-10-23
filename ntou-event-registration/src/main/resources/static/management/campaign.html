@@ -26,6 +26,43 @@
             font-family: "微軟正黑體";
         }
     </style>
+    <script>
+        $(document).ready(function () {
+
+            $.getJSON("../file/categories.json", function (data) {
+                let selectElement = document.getElementById("activityCategory");
+                for (let category in data) {
+                    if (data.hasOwnProperty(category)) {
+                        data[category].forEach(function (unit) {
+                            let option = document.createElement("option");
+                            option.value = unit;
+                            option.text = unit;
+                            selectElement.appendChild(option);
+                        });
+                    }
+                }
+            });
+
+            document.getElementById("Form").addEventListener("submit", function (event) {
+                event.preventDefault();
+
+                const formData = new FormData(event.target);
+                const obj = Object.fromEntries(formData.entries());
+
+                $.ajax({
+                    contentType: "application/json",
+                    data: JSON.stringify(obj),
+                    success: function () {
+                        console.log("成功：" + JSON.stringify(obj));
+                    },
+                    type: "POST",
+                    url: "/events"
+                });
+            });
+
+        });
+
+    </script>
 </head>
 
 <body>
@@ -87,71 +124,51 @@
                     <hr>
                 </div>
                 <div class="col-md-2 border" id="campaigns" style="width: 60%;">
-                    創建活動
-                    <form>
-                        <!-- 活動主題輸入 -->
-                        <div>
-                            <label for="activityTitle">活動主題</label>
-                            <input type="text" id="activityTitle" name="activityTitle" />
-                        </div>
 
-                        <!-- 活動時間輸入 -->
-                        <div>
-                            <label for="activityTime">活動時間</label>
-                            <input type="datetime-local" id="activityTime" name="activityTime" />
+                    <div class="card mt-4">
+                        <div class="card-header">
+                            <h5 class="card-title">創建活動</h5>
                         </div>
-                        <!-- 活動地點輸入 -->
-                        <div>
-                            <label for="activityLocation">活動地點</label>
-                            <input type="text" id="activityLocation" name="activityLocation" />
-                        </div>
-                        <!-- 創建單位輸入 -->
-                        <div>
-                            <label for="organizer">主辦單位名稱</label>
-                            <input type="text" id="organizer" name="organizer" />
-                        </div>
+                        <form class="card-body" id="Form">
+                            <div class="form-outline mb-4">
+                                <label for="activityTitle">活動主題</label>
+                                <input type="text" id="title" name="title" class="form-control">
+                            </div>
 
-                        <!--活動圖片上傳-->
-                        <div>
-                            <label for="activityImage">活動圖片</label>
-                            <input type="file" id="activityImage" name="activityImage" accept="image/*" />
-                        </div>
-
-                        <!-- 活動概述輸入 -->
-                        <div>
-                            <label for="activityDescription">活動介紹</label>
-                            <textarea id="activityDescription" name="activityDescription" rows="4"></textarea>
-                        </div>
-                        <!-- 活動介紹輸入 -->
-                        <div>
-                            <label for="activityDescription">活動介紹</label>
-                            <textarea id="activityDescription" name="activityDescription" rows="4"></textarea>
-                        </div>
-
-                        <!--活動設定 選擇-->
-                        <div>
-                            <label for="activitySetting">活動設定</label>
-                            <select id="activitySetting" name="activitySetting">
-                                <option value="public">公開</option>
-                                <option value="private">私人</option>
-                            </select>
-                        </div>
-                        <!--提交-->
-                        <div>
-                            <input type="submit" value="提交" />
-                        </div>
-                    </form>
+                            <div class="form-outline mb-4">
+                                <label for="activityCategory">活動分類</label>
+                                <select id="activityCategory" name="from" class="form-control">
+                                </select>
+                            </div>
+                            <div class="form-outline mb-4">
+                                <label for="activityTime">活動開始時間</label>
+                                <input type="datetime-local" name="startTime" class="form-control">
+                            </div>
+                            <div class="form-outline mb-4">
+                                <label for="activityTime">活動結束時間</label>
+                                <input type="datetime-local" name="endTime" class="form-control">
+                            </div>
+                            <div class="form-outline mb-4">
+                                <label for="activityLocation">活動地點</label>
+                                <input type="text" name="venue" class="form-control" />
+                            </div>
+                            <div class="form-group mb-4">
+                                <label for="activityDescription">活動介紹</label>
+                                <textarea id="activityDescription" name="describe" rows="4"
+                                    class="form-control"></textarea>
+                            </div>
+                            <div class="text-center">
+                                <input type="submit" value="提交" class="btn btn-primary" id="submitBtn" />
+                            </div>
+                        </form>
+                    </div>
 
                 </div>
                 <div class="bg-light col-md-1.5 border" style="width: 15%;">
                 </div>
             </div>
         </div>
-
-
     </div>
-
-
 </body>
 
 </html>
