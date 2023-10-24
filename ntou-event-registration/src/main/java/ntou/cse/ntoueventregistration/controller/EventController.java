@@ -18,8 +18,13 @@ public class EventController {
     }
 
     @GetMapping
-    public List<Event> getAllEvents() {
+    public List<Event> getEvents() {
         return service.getAllEvents();
+    }
+
+    @GetMapping("/search")
+    public List<Event> getEvents(@RequestParam("keyword") String keyword) {
+        return service.getEventsByTitleLike(keyword);
     }
 
     @PostMapping
